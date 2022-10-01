@@ -62,6 +62,7 @@ class Weapon {
     
     public func shoot() {
         if currentNumberOfBullets > 0 {
+            currentNumberOfBullets -= 1
             print("Выстрел!")
         } else {
             print("*Щёлк* (пустой магазин)")
