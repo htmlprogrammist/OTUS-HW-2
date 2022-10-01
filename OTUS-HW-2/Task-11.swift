@@ -117,6 +117,15 @@ enum ShootingMode {
 }
 
 func task11() {
+    let desertEagle = Weapon(numberOfBulletsInClip: 7, reloadingTime: 3)
+    desertEagle.reload()
+    
+    for _ in 0..<7 {
+        desertEagle.shoot()
+    }
+    desertEagle.shoot()
+    desertEagle.reload()
+    
     let ak = AutomaticWeapon(numberOfBulletsInClip: 30, reloadingTime: 4)
     ak.reload()
     ak.changeShootingMode(to: .automatic)
