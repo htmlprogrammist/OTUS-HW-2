@@ -27,6 +27,7 @@
 		F074C8E728E8101B003715AD /* OTUS-HW-2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "OTUS-HW-2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F074C8EA28E8101B003715AD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F074C8F128E81048003715AD /* Task-13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task-13.swift"; sourceTree = "<group>"; };
+		F074C8F328E810BA003715AD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +44,7 @@
 		F074C8DE28E8101B003715AD = {
 			isa = PBXGroup;
 			children = (
+				F074C8F328E810BA003715AD /* README.md */,
 				F074C8E928E8101B003715AD /* OTUS-HW-2 */,
 				F074C8E828E8101B003715AD /* Products */,
 			);
