@@ -5,6 +5,6 @@
 //  Created by Егор Бадмаев on 01.10.2022.
 //
 
-task11()
+//task11()
 //task13()
-//task14()
+task14()
