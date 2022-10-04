@@ -53,7 +53,33 @@ func increaseNumber(function: (Int, Int) -> Int, a: Int, b: Int) {
 
 // MARK: - Функция с несколькими замыканиями
 
+// 1-ая версия
+let increment = { () -> Int in
+    return 1
+}
 
+let doubleIncrement = { () -> Int in
+    return 2
+}
+
+func add(number: inout Int, incrementers: () -> Int...) {
+    for increment in incrementers {
+        number += increment()
+    }
+}
+
+// 2-ая версия (2 версии, т.к. не уверен, что правильно понял задание)
+let wrapper = { (value: Int) -> String in
+    return "Wrapped value of \(value)"
+}
+
+let output = {
+    return 5
+}
+
+func wrapOutput(wrapper: (Int) -> String, output: () -> Int) {
+    print(wrapper(output()))
+}
 
 // MARK: - Функция с autoclosure
 
@@ -65,11 +91,38 @@ func debugLog(_ isError: @autoclosure () -> Bool) {
 
 // MARK: - Использование внутренних функций
 
+enum Measurement {
+    case centimeters
+    case meters
+    case kilometers
+}
 
+func calculateLength(for length: Double, with measurement: Measurement) {
+    func calculateCentimeters(length: Double) -> Double {
+        return length
+    }
+    
+    func calculateMeters(length: Double) -> Double {
+        return length / 100
+    }
+    
+    func calculateKilometers(length: Double) -> Double {
+        return length / 1000
+    }
+    
+    switch measurement {
+    case .centimeters:
+        print(calculateCentimeters(length: length))
+    case .meters:
+        print(calculateMeters(length: length))
+    case .kilometers:
+        print(calculateKilometers(length: length))
+    }
+}
 
 // MARK: - Дженерик-функция с условием
 
-func printContent<ContentType>(_ content: ContentType, configurationCheck: (ContentType, Int) -> Bool) {
+func printContent<ContentType>(_ content: ContentType, configurationCheck: (ContentType, Int) -> Bool) where ContentType: Equatable {
     let copies = 1
     let isAllowed = configurationCheck(content, copies)
     
@@ -90,6 +143,18 @@ func task14() {
     /// # Функция с autoclosure.
     debugLog(1 < 2)
     debugLog(false)
+    
+    /// # Использование внутренних функций.
+    calculateLength(for: 150, with: .centimeters)
+    calculateLength(for: 1050.150, with: .meters)
+    calculateLength(for: 20500.4, with: .kilometers)
+    
+    /// # Функция с несколькими замыканиями.
+    var number = 10
+    add(number: &number, incrementers: increment, doubleIncrement)
+    print(number) // 13
+    
+    wrapOutput(wrapper: wrapper, output: output) // Wrapped value of 5
     
     /// # Дженерик-функция с условием
     printContent("String Content") { content, number in
